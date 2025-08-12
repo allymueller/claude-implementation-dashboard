@@ -32,19 +32,36 @@ export default function ProgressTracking({
   onUpdateChecklist 
 }: ProgressTrackingProps) {
   const [expandedSteps, setExpandedSteps] = useState<Set<string>>(new Set())
+  const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set())
+  
+  // Initialize completed steps from progress data
+  useEffect(() => {
+    const completed = progress
+      .filter(p => p.status === 'completed')
+      .map(p => p.stepId)
+    setCompletedSteps(new Set(completed))
+  }, [progress])
   
   const getStepProgress = (stepId: string) => {
     return progress.find(p => p.stepId === stepId)
   }
 
-  const getStatusIcon = (status?: ImplementationProgress['status']) => {
-    switch (status) {
-      case 'completed': return <CheckCircle className="h-5 w-5 text-olive" />
-      case 'in_progress': return <Clock className="h-5 w-5 text-sky" />
-      case 'blocked': return <AlertCircle className="h-5 w-5 text-coral" />
-      default: return <div className="h-5 w-5 rounded-full border-2 border-gray-300" />
+  const toggleStepCompletion = (stepId: string) => {
+    const newCompleted = new Set(completedSteps)
+    if (newCompleted.has(stepId)) {
+      newCompleted.delete(stepId)
+      onUpdateProgress(stepId, 'not_started')
+    } else {
+      newCompleted.add(stepId)
+      onUpdateProgress(stepId, 'completed')
     }
+    setCompletedSteps(newCompleted)
   }
+
+  const calculateCompletionPercentage = () => {
+    return Math.round((completedSteps.size / steps.length) * 100)
+  }
+
 
   const toggleStep = (stepId: string) => {
     const newExpanded = new Set(expandedSteps)
@@ -61,12 +78,18 @@ export default function ProgressTracking({
       {/* Clean Progress Header */}
       <div className="text-center py-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-clay rounded-full mb-4">
-          <span className="text-2xl text-ivory font-medium">{stats.overallProgress}%</span>
+          <span className="text-2xl text-ivory font-medium">{calculateCompletionPercentage()}%</span>
         </div>
         <h1 className="text-3xl font-medium text-slate mb-2">Implementation Progress</h1>
         <p className="text-gray-600">
-          {stats.completedSteps} of {stats.totalSteps} steps completed
+          {completedSteps.size} of {steps.length} steps completed
         </p>
+        {calculateCompletionPercentage() === 100 && (
+          <div className="mt-4 inline-flex items-center px-4 py-2 bg-olive/10 border border-olive/20 rounded-full">
+            <CheckCircle className="h-5 w-5 text-olive mr-2" />
+            <span className="text-olive font-medium">Implementation Complete! 🎉</span>
+          </div>
+        )}
       </div>
 
       {/* Minimal Progress Steps */}
@@ -74,33 +97,52 @@ export default function ProgressTracking({
         {steps.map((step, index) => {
           const stepProgress = getStepProgress(step.id)
           const isExpanded = expandedSteps.has(step.id)
-          const isCompleted = stepProgress?.status === 'completed'
+          const isCompleted = completedSteps.has(step.id)
           const isInProgress = stepProgress?.status === 'in_progress'
           
           return (
             <div key={step.id} className="border border-gray-200 rounded-lg overflow-hidden">
               {/* Step Header - Clean and Minimal */}
-              <button
-                onClick={() => toggleStep(step.id)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
-              >
-                <div className="flex items-center space-x-4">
-                  {getStatusIcon(stepProgress?.status)}
-                  <div className="text-left">
-                    <h3 className="font-medium text-slate">{step.title}</h3>
+              <div className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                <div className="flex items-center space-x-4 flex-1">
+                  {/* Completion Checkbox */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      toggleStepCompletion(step.id)
+                    }}
+                    className="flex-shrink-0"
+                  >
+                    {isCompleted ? (
+                      <CheckCircle className="h-6 w-6 text-olive hover:text-olive/80" />
+                    ) : (
+                      <div className="h-6 w-6 rounded-full border-2 border-gray-300 hover:border-olive/50 transition-colors" />
+                    )}
+                  </button>
+                  
+                  <div className="text-left flex-1">
+                    <h3 className={`font-medium ${isCompleted ? 'text-olive line-through' : 'text-slate'}`}>
+                      {step.title}
+                    </h3>
                     <p className="text-sm text-gray-600">{step.description}</p>
                   </div>
                 </div>
+                
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-gray-500">
                     ~{step.estimatedMinutes}min
                   </span>
-                  {isExpanded ? 
-                    <ChevronDown className="h-4 w-4 text-gray-400" /> : 
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
-                  }
+                  <button
+                    onClick={() => toggleStep(step.id)}
+                    className="p-1"
+                  >
+                    {isExpanded ? 
+                      <ChevronDown className="h-4 w-4 text-gray-400" /> : 
+                      <ChevronRight className="h-4 w-4 text-gray-400" />
+                    }
+                  </button>
                 </div>
-              </button>
+              </div>
 
               {/* Expanded Content - Hidden by Default */}
               {isExpanded && (
@@ -109,14 +151,17 @@ export default function ProgressTracking({
                     
                     {/* Quick Actions */}
                     <div className="flex items-center space-x-3">
-                      {!isCompleted && (
-                        <button
-                          onClick={() => onUpdateProgress(step.id, isInProgress ? 'completed' : 'in_progress')}
-                          className="inline-flex items-center px-4 py-2 bg-clay text-ivory rounded-lg hover:opacity-90 text-sm font-medium"
-                        >
-                          {isInProgress ? 'Mark Complete' : 'Start Step'}
-                        </button>
-                      )}
+                      <button
+                        onClick={() => toggleStepCompletion(step.id)}
+                        className={`inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          isCompleted 
+                            ? 'bg-olive/10 text-olive border border-olive/20 hover:bg-olive/20' 
+                            : 'bg-clay text-ivory hover:opacity-90'
+                        }`}
+                      >
+                        <CheckCircle className="h-4 w-4 mr-2" />
+                        {isCompleted ? 'Completed' : 'Mark Complete'}
+                      </button>
                       
                       <button 
                         onClick={() => window.open(`mailto:support@anthropic.com?subject=Help with ${step.title}`, '_blank')}
@@ -161,20 +206,6 @@ export default function ProgressTracking({
                       </div>
                     )}
 
-                    {/* Status Update (only if in progress) */}
-                    {isInProgress && (
-                      <div className="pt-4 border-t border-gray-200">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Add notes (optional)
-                        </label>
-                        <textarea
-                          placeholder="Any updates or notes about your progress..."
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-clay focus:border-clay text-sm"
-                          rows={3}
-                          onChange={(e) => onUpdateProgress(step.id, 'in_progress', e.target.value)}
-                        />
-                      </div>
-                    )}
                   </div>
                 </div>
               )}
