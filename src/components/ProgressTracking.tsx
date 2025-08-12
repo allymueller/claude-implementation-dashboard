@@ -37,7 +37,7 @@ export default function ProgressTracking({
     return progress.find(p => p.stepId === stepId)
   }
 
-  const getStatusIcon = (status: ImplementationProgress['status']) => {
+  const getStatusIcon = (status?: ImplementationProgress['status']) => {
     switch (status) {
       case 'completed': return <CheckCircle className="h-5 w-5 text-olive" />
       case 'in_progress': return <Clock className="h-5 w-5 text-sky" />
