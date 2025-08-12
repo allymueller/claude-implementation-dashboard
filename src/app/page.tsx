@@ -87,7 +87,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-medium text-slate">Claude Enterprise</h1>
+              <h1 className="text-xl font-medium text-slate">Claude for Enterprise</h1>
               <span className="text-sm text-gray-500">Implementation</span>
             </div>
             

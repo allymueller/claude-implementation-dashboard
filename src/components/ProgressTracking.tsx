@@ -80,7 +80,7 @@ export default function ProgressTracking({
         <div className="inline-flex items-center justify-center w-16 h-16 bg-clay rounded-full mb-4">
           <span className="text-2xl text-ivory font-medium">{calculateCompletionPercentage()}%</span>
         </div>
-        <h1 className="text-3xl font-medium text-slate mb-2">Claude for Enterprise</h1>
+        <h1 className="text-3xl font-medium text-slate mb-2">Implementation Checklist</h1>
         <p className="text-gray-600">
           {completedSteps.size} of {steps.length} steps completed
         </p>
