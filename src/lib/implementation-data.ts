@@ -80,8 +80,8 @@ export const implementationSteps: ImplementationStep[] = [
   {
     id: 'step-002', 
     category: 'Foundation',
-    title: 'SSO Integration',
-    description: 'Configure Single Sign-On with your identity provider',
+    title: 'SSO & SCIM Integration',
+    description: 'Configure Single Sign-On and SCIM user provisioning with your identity provider',
     estimatedMinutes: 15,
     order: 2,
     dependencies: ['step-001'],
