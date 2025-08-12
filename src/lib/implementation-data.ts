@@ -205,18 +205,13 @@ export const implementationSteps: ImplementationStep[] = [
     order: 6,
     dependencies: ['step-005'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
+    helpUrl: '#',
     resources: [
       {
-        title: 'Claude for Work Best Practices',
-        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
-        type: 'documentation'
-      },
-      {
-        title: 'Claude.ai Organization Console',
-        url: 'https://claude.ai/organizations',
-        type: 'tool',
-        description: 'Manage organization rollout in Claude.ai console'
+        title: 'TBD',
+        url: '#',
+        type: 'documentation',
+        description: 'Organization rollout resources coming soon'
       }
     ]
   },
