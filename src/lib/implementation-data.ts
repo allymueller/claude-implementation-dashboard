@@ -58,16 +58,16 @@ export const implementationSteps: ImplementationStep[] = [
     estimatedMinutes: 10,
     order: 1,
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9184690-getting-started-with-claude-for-work',
+    helpUrl: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
     resources: [
       {
-        title: 'Account Setup Guide',
-        url: 'https://support.anthropic.com/en/articles/9184690-getting-started-with-claude-for-work',
+        title: 'What is the Claude Enterprise plan?',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
         type: 'documentation'
       },
       {
-        title: 'Domain Verification',
-        url: 'https://support.anthropic.com/en/articles/9184690-getting-started-with-claude-for-work#h_01J4XKQHD4D6TGXZ8TKQY5CJQR',
+        title: 'Claude for Work Overview',
+        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
         type: 'documentation'
       }
     ]
@@ -81,21 +81,21 @@ export const implementationSteps: ImplementationStep[] = [
     order: 2,
     dependencies: ['step-001'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9487931-sso-saml-setup-guide',
+    helpUrl: 'https://support.anthropic.com/en/articles/9797544-setting-up-single-sign-on-on-the-enterprise-plan',
     resources: [
       {
-        title: 'SSO/SAML Setup Guide',
-        url: 'https://support.anthropic.com/en/articles/9487931-sso-saml-setup-guide',
+        title: 'Setting up Single Sign-On on the Enterprise plan',
+        url: 'https://support.anthropic.com/en/articles/9797544-setting-up-single-sign-on-on-the-enterprise-plan',
         type: 'documentation'
       },
       {
-        title: 'Okta Integration Guide',
-        url: 'https://support.anthropic.com/en/articles/9487931-sso-saml-setup-guide#h_01J4XKQ8G2B3VWXR9MTJY6FPQD',
+        title: 'Important Considerations Before Enabling SSO',
+        url: 'https://support.anthropic.com/en/articles/10276682-important-considerations-before-enabling-sso',
         type: 'documentation'
       },
       {
-        title: 'Azure AD Setup',
-        url: 'https://support.anthropic.com/en/articles/9487931-sso-saml-setup-guide#h_01J4XKQ8G2C4WYZS0NUKZ7GQRE',
+        title: 'Setting up SSO on the API Console',
+        url: 'https://support.anthropic.com/en/articles/10280258-setting-up-single-sign-on-on-the-api-console',
         type: 'documentation'
       }
     ]
@@ -109,23 +109,28 @@ export const implementationSteps: ImplementationStep[] = [
     order: 3,
     dependencies: ['step-002'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9520814-roles-and-permissions',
+    helpUrl: 'https://support.anthropic.com/en/articles/9970869-setting-up-scim-on-the-enterprise-plan',
     resources: [
       {
-        title: 'Roles and Permissions Guide',
-        url: 'https://support.anthropic.com/en/articles/9520814-roles-and-permissions',
+        title: 'Setting up SCIM on the Enterprise plan',
+        url: 'https://support.anthropic.com/en/articles/9970869-setting-up-scim-on-the-enterprise-plan',
         type: 'documentation'
       },
       {
-        title: 'User Provisioning (SCIM)',
-        url: 'https://support.anthropic.com/en/articles/9520815-user-provisioning-scim',
+        title: 'Managing Seats on Claude for Enterprise',
+        url: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
         type: 'documentation'
       },
       {
-        title: 'Bulk User Upload',
+        title: 'Managing Seats Without SSO',
+        url: 'https://support.anthropic.com/en/articles/9778024-managing-seats-on-claude-for-teams-and-enterprise-without-sso-enabled',
+        type: 'documentation'
+      },
+      {
+        title: 'User Management Console',
         url: 'https://claude.ai/organizations/settings/members',
         type: 'tool',
-        description: 'Access bulk upload in Claude.ai console'
+        description: 'Access user management in Claude.ai console'
       }
     ]
   },
@@ -138,23 +143,28 @@ export const implementationSteps: ImplementationStep[] = [
     order: 4,
     dependencies: ['step-003'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9520816-security-and-compliance',
+    helpUrl: 'https://support.anthropic.com/en/articles/10440198-custom-data-retention-controls-for-claude-enterprise',
     resources: [
       {
-        title: 'Security Settings Guide',
-        url: 'https://support.anthropic.com/en/articles/9520816-security-and-compliance',
+        title: 'Custom Data Retention Controls for Claude Enterprise',
+        url: 'https://support.anthropic.com/en/articles/10440198-custom-data-retention-controls-for-claude-enterprise',
         type: 'documentation'
       },
       {
-        title: 'Audit Logs',
-        url: 'https://claude.ai/organizations/settings/audit',
+        title: 'Security and Compliance Documentation',
+        url: 'https://docs.anthropic.com/en/docs/legal-center/security-compliance',
+        type: 'documentation'
+      },
+      {
+        title: 'Privacy Policies',
+        url: 'https://docs.anthropic.com/en/docs/legal-center/privacy',
+        type: 'documentation'
+      },
+      {
+        title: 'Organization Settings Console',
+        url: 'https://claude.ai/organizations/settings',
         type: 'tool',
-        description: 'Configure audit logging in Claude.ai console'
-      },
-      {
-        title: 'Data Retention Policies',
-        url: 'https://support.anthropic.com/en/articles/9520817-data-retention',
-        type: 'documentation'
+        description: 'Configure security settings in Claude.ai console'
       }
     ]
   },
@@ -167,21 +177,26 @@ export const implementationSteps: ImplementationStep[] = [
     order: 5,
     dependencies: ['step-004'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9520818-team-training',
+    helpUrl: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
     resources: [
       {
-        title: 'Training Resources',
-        url: 'https://support.anthropic.com/en/articles/9520818-team-training',
+        title: 'Usage Limit Best Practices',
+        url: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
         type: 'documentation'
       },
       {
-        title: 'Best Practices Guide',
-        url: 'https://support.anthropic.com/en/articles/9520819-claude-best-practices',
+        title: 'Claude Code Common Workflows',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/common-workflows',
         type: 'documentation'
       },
       {
-        title: 'Usage Examples',
-        url: 'https://support.anthropic.com/en/articles/9520820-usage-examples',
+        title: 'API Console Roles and Permissions',
+        url: 'https://support.anthropic.com/en/articles/10186004-api-console-roles-and-permissions',
+        type: 'documentation'
+      },
+      {
+        title: 'Claude Code Overview',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
         type: 'documentation'
       }
     ]
@@ -195,23 +210,23 @@ export const implementationSteps: ImplementationStep[] = [
     order: 6,
     dependencies: ['step-005'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9520821-organization-rollout',
+    helpUrl: 'https://support.anthropic.com/en/articles/11941803-setting-up-console-single-sign-on-with-claude-code-role-auto-provisioning',
     resources: [
       {
-        title: 'Rollout Strategy Guide',
-        url: 'https://support.anthropic.com/en/articles/9520821-organization-rollout',
+        title: 'Setting up Console SSO with Claude Code Role Auto-Provisioning',
+        url: 'https://support.anthropic.com/en/articles/11941803-setting-up-console-single-sign-on-with-claude-code-role-auto-provisioning',
         type: 'documentation'
       },
       {
-        title: 'Communication Templates',
-        url: 'https://support.anthropic.com/en/articles/9520822-rollout-communications',
+        title: 'Identity and Access Management',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/iam',
         type: 'documentation'
       },
       {
-        title: 'User Onboarding Portal',
-        url: 'https://claude.ai/organizations/onboarding',
+        title: 'Claude.ai Organization Console',
+        url: 'https://claude.ai/organizations',
         type: 'tool',
-        description: 'Manage user invitations in Claude.ai console'
+        description: 'Manage organization rollout in Claude.ai console'
       }
     ]
   },
@@ -224,18 +239,28 @@ export const implementationSteps: ImplementationStep[] = [
     order: 7,
     dependencies: ['step-006'],
     required: false,
-    helpUrl: 'https://support.anthropic.com/en/articles/9520823-usage-analytics',
+    helpUrl: 'https://docs.anthropic.com/en/docs/claude-code/analytics',
     resources: [
       {
-        title: 'Analytics Dashboard',
-        url: 'https://claude.ai/organizations/analytics',
-        type: 'tool',
-        description: 'View usage metrics in Claude.ai console'
+        title: 'Claude Code Analytics',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/analytics',
+        type: 'documentation'
       },
       {
-        title: 'Usage Optimization Guide',
-        url: 'https://support.anthropic.com/en/articles/9520823-usage-analytics',
+        title: 'Monitoring Usage with OpenTelemetry',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/monitoring-usage',
         type: 'documentation'
+      },
+      {
+        title: 'Cost Management',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/costs',
+        type: 'documentation'
+      },
+      {
+        title: 'Anthropic Console Dashboard',
+        url: 'https://console.anthropic.com/dashboard',
+        type: 'tool',
+        description: 'View usage analytics in Anthropic Console'
       }
     ]
   },
@@ -248,12 +273,23 @@ export const implementationSteps: ImplementationStep[] = [
     order: 8,
     dependencies: ['step-007'],
     required: false,
-    helpUrl: 'https://support.anthropic.com/en/articles/9520824-success-metrics',
+    helpUrl: 'https://docs.anthropic.com/en/docs/claude-code/overview',
     resources: [
       {
-        title: 'Success Metrics Guide',
-        url: 'https://support.anthropic.com/en/articles/9520824-success-metrics',
+        title: 'Claude Code Overview and Success Metrics',
+        url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
         type: 'documentation'
+      },
+      {
+        title: 'API Console Collection',
+        url: 'https://support.anthropic.com/en/collections/5370014-anthropic-api-api-console',
+        type: 'documentation'
+      },
+      {
+        title: 'Contact Support',
+        url: 'mailto:support@anthropic.com',
+        type: 'documentation',
+        description: 'Get ongoing support and success consultation'
       }
     ]
   }
