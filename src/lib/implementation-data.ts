@@ -205,13 +205,13 @@ export const implementationSteps: ImplementationStep[] = [
     order: 6,
     dependencies: ['step-005'],
     required: true,
-    helpUrl: '#',
+    helpUrl: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
     resources: [
       {
-        title: 'TBD',
-        url: '#',
+        title: 'Organization Rollout Guide',
+        url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
         type: 'documentation',
-        description: 'Organization rollout resources coming soon'
+        description: 'Comprehensive guide for rolling out Claude across your organization'
       }
     ]
   },
