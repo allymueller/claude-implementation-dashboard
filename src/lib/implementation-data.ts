@@ -94,8 +94,8 @@ export const implementationSteps: ImplementationStep[] = [
         type: 'documentation'
       },
       {
-        title: 'Setting up SSO on the API Console',
-        url: 'https://support.anthropic.com/en/articles/10280258-setting-up-single-sign-on-on-the-api-console',
+        title: 'Enterprise Plan Features Overview',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
         type: 'documentation'
       }
     ]
@@ -185,18 +185,13 @@ export const implementationSteps: ImplementationStep[] = [
         type: 'documentation'
       },
       {
-        title: 'Claude Code Common Workflows',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/common-workflows',
+        title: 'Claude for Work Best Practices',
+        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
         type: 'documentation'
       },
       {
-        title: 'API Console Roles and Permissions',
-        url: 'https://support.anthropic.com/en/articles/10186004-api-console-roles-and-permissions',
-        type: 'documentation'
-      },
-      {
-        title: 'Claude Code Overview',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
+        title: 'Enterprise User Training Resources',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
         type: 'documentation'
       }
     ]
@@ -210,16 +205,16 @@ export const implementationSteps: ImplementationStep[] = [
     order: 6,
     dependencies: ['step-005'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/11941803-setting-up-console-single-sign-on-with-claude-code-role-auto-provisioning',
+    helpUrl: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
     resources: [
       {
-        title: 'Setting up Console SSO with Claude Code Role Auto-Provisioning',
-        url: 'https://support.anthropic.com/en/articles/11941803-setting-up-console-single-sign-on-with-claude-code-role-auto-provisioning',
+        title: 'Managing Seats on Claude for Enterprise',
+        url: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
         type: 'documentation'
       },
       {
-        title: 'Identity and Access Management',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/iam',
+        title: 'Managing Seats Without SSO Enabled',
+        url: 'https://support.anthropic.com/en/articles/9778024-managing-seats-on-claude-for-teams-and-enterprise-without-sso-enabled',
         type: 'documentation'
       },
       {
@@ -239,28 +234,23 @@ export const implementationSteps: ImplementationStep[] = [
     order: 7,
     dependencies: ['step-006'],
     required: false,
-    helpUrl: 'https://docs.anthropic.com/en/docs/claude-code/analytics',
+    helpUrl: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
     resources: [
       {
-        title: 'Claude Code Analytics',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/analytics',
+        title: 'Usage Limit Best Practices',
+        url: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
         type: 'documentation'
       },
       {
-        title: 'Monitoring Usage with OpenTelemetry',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/monitoring-usage',
+        title: 'Claude for Work Plan Features',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
         type: 'documentation'
       },
       {
-        title: 'Cost Management',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/costs',
-        type: 'documentation'
-      },
-      {
-        title: 'Anthropic Console Dashboard',
-        url: 'https://console.anthropic.com/dashboard',
+        title: 'Claude.ai Organization Dashboard',
+        url: 'https://claude.ai/organizations',
         type: 'tool',
-        description: 'View usage analytics in Anthropic Console'
+        description: 'View organization usage in Claude.ai'
       }
     ]
   },
@@ -273,16 +263,16 @@ export const implementationSteps: ImplementationStep[] = [
     order: 8,
     dependencies: ['step-007'],
     required: false,
-    helpUrl: 'https://docs.anthropic.com/en/docs/claude-code/overview',
+    helpUrl: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
     resources: [
       {
-        title: 'Claude Code Overview and Success Metrics',
-        url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
+        title: 'Claude for Work Success Metrics',
+        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
         type: 'documentation'
       },
       {
-        title: 'API Console Collection',
-        url: 'https://support.anthropic.com/en/collections/5370014-anthropic-api-api-console',
+        title: 'What is the Claude Enterprise plan?',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
         type: 'documentation'
       },
       {
