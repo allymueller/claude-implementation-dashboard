@@ -230,6 +230,16 @@ export const implementationSteps: ImplementationStep[] = [
         title: 'Usage Limit Best Practices',
         url: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
         type: 'documentation'
+      },
+      {
+        title: 'Creating Usage Analytics with Claude for Enterprise Audit Logs',
+        url: 'https://support.anthropic.com/en/articles/10306677-creating-usage-analytics-with-claude-for-enterprise-audit-logs',
+        type: 'documentation'
+      },
+      {
+        title: 'How to Access Audit Logs',
+        url: 'https://support.anthropic.com/en/articles/9970975-how-to-access-audit-logs#h_3d56c7eebb',
+        type: 'documentation'
       }
     ]
   },
