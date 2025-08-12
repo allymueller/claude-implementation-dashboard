@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+/* Anthropic Custom Fonts */
+@font-face {
+  font-family: 'Styrene A';
+  src: url('/fonts/Styrene A/StyreneALC-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene A';
+  src: url('/fonts/Styrene A/StyreneALC-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene B';
+  src: url('/fonts/Styrene B/StyreneBLC-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene B';
+  src: url('/fonts/Styrene B/StyreneBLC-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene B';
+  src: url('/fonts/Styrene B/StyreneBLC-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene B';
+  src: url('/fonts/Styrene B/StyreneBLC-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('/fonts/Tiempos/TiemposText-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('/fonts/Tiempos/TiemposText-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('/fonts/Tiempos/TiemposText-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('/fonts/Tiempos/TiemposText-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --background: #FAF9F5;
+  --foreground: #141413;
+  
+  /* Anthropic Brand Colors - Primary */
+  --slate: #141413;
+  --ivory: #FAF9F5;
+  --clay: #D97757;
+  
+  /* Anthropic Brand Colors - Secondary */
+  --fig: #C46686;
+  --sky: #6A9BCC;
+  --olive: #78BC5D;
+  --coral: #EBCECE;
+  --heather: #CBCADB;
+  --cactus: #BCD1CA;
+  --oat: #E3DACC;
+  
+  /* Neutral variations for UI */
+  --gray-50: #FAF9F5;
+  --gray-100: #F2F1ED;
+  --gray-200: #E8E6E0;
+  --gray-300: #D4D1C7;
+  --gray-400: #A8A49A;
+  --gray-500: #7C786E;
+  --gray-600: #5C5852;
+  --gray-700: #434039;
+  --gray-800: #2D2B26;
+  --gray-900: #1F1E1A;
+  --gray-950: #141413;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Styrene B', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Styrene A', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Tiempos Text', Georgia, 'Times New Roman', serif;
+  --font-mono: var(--font-geist-mono);
+  
+  /* Anthropic Brand Colors */
+  --color-slate: var(--slate);
+  --color-ivory: var(--ivory);
+  --color-clay: var(--clay);
+  --color-fig: var(--fig);
+  --color-sky: var(--sky);
+  --color-olive: var(--olive);
+  --color-coral: var(--coral);
+  --color-heather: var(--heather);
+  --color-cactus: var(--cactus);
+  --color-oat: var(--oat);
+  
+  /* Neutral UI Colors */
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #141413;
+    --foreground: #FAF9F5;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Styrene B', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.002em;
+}
+
+/* Anthropic Brand Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Styrene A', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--slate);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Body text with Tiempos for longer content */
+.text-serif {
+  font-family: 'Tiempos Text', Georgia, 'Times New Roman', serif;
+}
+
+/* UI elements with Styrene B */
+.text-ui {
+  font-family: 'Styrene B', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Anthropic Button Styles */
+.btn-primary {
+  background: var(--slate);
+  color: var(--ivory);
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--gray-800);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--gray-50);
+  border-color: var(--clay);
+}
+
+/* Accent buttons using brand colors */
+.btn-clay {
+  background: var(--clay);
+  color: var(--ivory);
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-clay:hover {
+  background: #C16641;
+  transform: translateY(-1px);
+}
+
+.btn-sky {
+  background: var(--sky);
+  color: var(--ivory);
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-sky:hover {
+  background: #5B89B8;
+  transform: translateY(-1px);
+}
+
+/* Card styles with Anthropic colors */
+.card {
+  background: var(--ivory);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--clay);
+  box-shadow: 0 2px 12px rgba(20, 20, 19, 0.06);
+}
+
+/* Status indicators using brand colors */
+.status-active {
+  background: var(--cactus);
+  color: var(--slate);
+}
+
+.status-pending {
+  background: var(--oat);
+  color: var(--slate);
+}
+
+.status-in-progress {
+  background: var(--sky);
+  color: var(--ivory);
+}
+
+.status-warning {
+  background: var(--coral);
+  color: var(--slate);
+}
+
+/* Brand color utilities */
+.bg-clay { background-color: var(--clay); }
+.bg-fig { background-color: var(--fig); }
+.bg-sky { background-color: var(--sky); }
+.bg-olive { background-color: var(--olive); }
+.bg-coral { background-color: var(--coral); }
+.bg-heather { background-color: var(--heather); }
+.bg-cactus { background-color: var(--cactus); }
+.bg-oat { background-color: var(--oat); }
+.bg-slate { background-color: var(--slate); }
+.bg-ivory { background-color: var(--ivory); }
+
+.text-clay { color: var(--clay); }
+.text-fig { color: var(--fig); }
+.text-sky { color: var(--sky); }
+.text-olive { color: var(--olive); }
+.text-slate { color: var(--slate); }
+.text-ivory { color: var(--ivory); }
