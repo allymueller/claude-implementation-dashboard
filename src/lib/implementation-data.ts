@@ -69,6 +69,11 @@ export const implementationSteps: ImplementationStep[] = [
         title: 'Claude for Work Overview',
         url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
         type: 'documentation'
+      },
+      {
+        title: 'Enterprise Plan Features Overview',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
+        type: 'documentation'
       }
     ]
   },
@@ -94,8 +99,8 @@ export const implementationSteps: ImplementationStep[] = [
         type: 'documentation'
       },
       {
-        title: 'Enterprise Plan Features Overview',
-        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
+        title: 'Setting up SCIM on the Enterprise plan',
+        url: 'https://support.anthropic.com/en/articles/9970869-setting-up-scim-on-the-enterprise-plan',
         type: 'documentation'
       }
     ]
@@ -109,13 +114,8 @@ export const implementationSteps: ImplementationStep[] = [
     order: 3,
     dependencies: ['step-002'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9970869-setting-up-scim-on-the-enterprise-plan',
+    helpUrl: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
     resources: [
-      {
-        title: 'Setting up SCIM on the Enterprise plan',
-        url: 'https://support.anthropic.com/en/articles/9970869-setting-up-scim-on-the-enterprise-plan',
-        type: 'documentation'
-      },
       {
         title: 'Managing Seats on Claude for Enterprise',
         url: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
@@ -205,16 +205,11 @@ export const implementationSteps: ImplementationStep[] = [
     order: 6,
     dependencies: ['step-005'],
     required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
+    helpUrl: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
     resources: [
       {
-        title: 'Managing Seats on Claude for Enterprise',
-        url: 'https://support.anthropic.com/en/articles/10543488-managing-seats-on-claude-for-enterprise',
-        type: 'documentation'
-      },
-      {
-        title: 'Managing Seats Without SSO Enabled',
-        url: 'https://support.anthropic.com/en/articles/9778024-managing-seats-on-claude-for-teams-and-enterprise-without-sso-enabled',
+        title: 'Claude for Work Best Practices',
+        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
         type: 'documentation'
       },
       {
@@ -240,17 +235,6 @@ export const implementationSteps: ImplementationStep[] = [
         title: 'Usage Limit Best Practices',
         url: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
         type: 'documentation'
-      },
-      {
-        title: 'Claude for Work Plan Features',
-        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
-        type: 'documentation'
-      },
-      {
-        title: 'Claude.ai Organization Dashboard',
-        url: 'https://claude.ai/organizations',
-        type: 'tool',
-        description: 'View organization usage in Claude.ai'
       }
     ]
   },
@@ -263,18 +247,8 @@ export const implementationSteps: ImplementationStep[] = [
     order: 8,
     dependencies: ['step-007'],
     required: false,
-    helpUrl: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
+    helpUrl: 'mailto:support@anthropic.com',
     resources: [
-      {
-        title: 'Claude for Work Success Metrics',
-        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
-        type: 'documentation'
-      },
-      {
-        title: 'What is the Claude Enterprise plan?',
-        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
-        type: 'documentation'
-      },
       {
         title: 'Contact Support',
         url: 'mailto:support@anthropic.com',
