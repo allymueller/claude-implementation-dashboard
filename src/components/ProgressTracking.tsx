@@ -62,6 +62,34 @@ export default function ProgressTracking({
     return Math.round((completedSteps.size / steps.length) * 100)
   }
 
+  const getTimeRemaining = () => {
+    const remainingSteps = steps.filter(step => !completedSteps.has(step.id))
+    const totalMinutes = remainingSteps.reduce((sum, step) => sum + step.estimatedMinutes, 0)
+    if (totalMinutes === 0) return "Complete!"
+    if (totalMinutes < 60) return `${totalMinutes} minutes remaining`
+    const hours = Math.floor(totalMinutes / 60)
+    const minutes = totalMinutes % 60
+    return `${hours}h ${minutes > 0 ? `${minutes}m` : ''} remaining`
+  }
+
+  const getNextStep = () => {
+    const nextStep = steps.find(step => 
+      !completedSteps.has(step.id) && 
+      (step.dependencies || []).every(depId => completedSteps.has(depId))
+    )
+    return nextStep
+  }
+
+  const isStepAccessible = (step: ImplementationStep) => {
+    return (step.dependencies || []).every(depId => completedSteps.has(depId))
+  }
+
+  const getStepStatus = (step: ImplementationStep) => {
+    if (completedSteps.has(step.id)) return 'completed'
+    if (isStepAccessible(step)) return 'accessible'
+    return 'locked'
+  }
+
 
   const toggleStep = (stepId: string) => {
     const newExpanded = new Set(expandedSteps)
@@ -75,19 +103,29 @@ export default function ProgressTracking({
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      {/* Clean Progress Header */}
+      {/* Enhanced Progress Header */}
       <div className="text-center py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-clay rounded-full mb-4">
+        <div className="inline-flex items-center justify-center w-20 h-20 bg-clay rounded-full mb-4">
           <span className="text-2xl text-ivory font-medium">{calculateCompletionPercentage()}%</span>
         </div>
         <h1 className="text-3xl font-medium text-slate mb-2">Implementation Checklist</h1>
-        <p className="text-gray-600">
-          {completedSteps.size} of {steps.length} steps completed
+        <p className="text-gray-600 mb-2">
+          Step {completedSteps.size + 1} of {steps.length} • {getTimeRemaining()}
         </p>
+        
+        {/* Next Step Preview */}
+        {getNextStep() && calculateCompletionPercentage() < 100 && (
+          <div className="mt-4 inline-flex items-center px-4 py-2 bg-sky/10 border border-sky/20 rounded-full">
+            <Clock className="h-4 w-4 text-sky mr-2" />
+            <span className="text-sky font-medium">Coming next: {getNextStep()?.title}</span>
+          </div>
+        )}
+        
+        {/* Completion Celebration */}
         {calculateCompletionPercentage() === 100 && (
-          <div className="mt-4 inline-flex items-center px-4 py-2 bg-olive/10 border border-olive/20 rounded-full">
-            <CheckCircle className="h-5 w-5 text-olive mr-2" />
-            <span className="text-olive font-medium">Implementation Complete! 🎉</span>
+          <div className="mt-4 inline-flex items-center px-6 py-3 bg-olive/10 border border-olive/20 rounded-full">
+            <CheckCircle className="h-6 w-6 text-olive mr-2" />
+            <span className="text-olive font-medium text-lg">🎉 Implementation Complete!</span>
           </div>
         )}
       </div>
@@ -98,54 +136,101 @@ export default function ProgressTracking({
           const stepProgress = getStepProgress(step.id)
           const isExpanded = expandedSteps.has(step.id)
           const isCompleted = completedSteps.has(step.id)
-          const isInProgress = stepProgress?.status === 'in_progress'
+          const stepStatus = getStepStatus(step)
+          const isAccessible = stepStatus === 'accessible'
+          const isLocked = stepStatus === 'locked'
+          const isNextStep = getNextStep()?.id === step.id
           
           return (
-            <div key={step.id} className="border border-gray-200 rounded-lg overflow-hidden">
-              {/* Step Header - Clean and Minimal */}
-              <div className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <div key={step.id} className={`border rounded-lg overflow-hidden transition-all ${
+              isCompleted ? 'border-olive/30 bg-olive/5' :
+              isNextStep ? 'border-sky/40 bg-sky/5 shadow-sm' :
+              isAccessible ? 'border-gray-200 bg-white' :
+              'border-gray-100 bg-gray-50'
+            }`}>
+              {/* Progressive Disclosure Step Header */}
+              <div className={`px-6 py-4 flex items-center justify-between transition-colors ${
+                isLocked ? 'opacity-60 cursor-not-allowed' : 'hover:bg-gray-50 cursor-pointer'
+              }`}>
                 <div className="flex items-center space-x-4 flex-1">
-                  {/* Completion Checkbox */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      toggleStepCompletion(step.id)
-                    }}
-                    className="flex-shrink-0"
-                  >
+                  {/* Smart Status Indicator */}
+                  <div className="flex-shrink-0">
                     {isCompleted ? (
-                      <CheckCircle className="h-6 w-6 text-olive hover:text-olive/80" />
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleStepCompletion(step.id)
+                        }}
+                      >
+                        <CheckCircle className="h-6 w-6 text-olive hover:text-olive/80" />
+                      </button>
+                    ) : isLocked ? (
+                      <div className="h-6 w-6 rounded-full border-2 border-gray-200 bg-gray-100 flex items-center justify-center">
+                        <div className="h-2 w-2 bg-gray-300 rounded-full" />
+                      </div>
                     ) : (
-                      <div className="h-6 w-6 rounded-full border-2 border-gray-300 hover:border-olive/50 transition-colors" />
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleStepCompletion(step.id)
+                        }}
+                        className="h-6 w-6 rounded-full border-2 border-gray-300 hover:border-olive/50 transition-colors flex items-center justify-center"
+                      >
+                        {isNextStep && <div className="h-2 w-2 bg-sky rounded-full animate-pulse" />}
+                      </button>
                     )}
-                  </button>
+                  </div>
                   
                   <div className="text-left flex-1">
-                    <h3 className={`font-medium ${isCompleted ? 'text-olive line-through' : 'text-slate'}`}>
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-gray-600">{step.description}</p>
+                    <div className="flex items-center space-x-2">
+                      <h3 className={`font-medium ${
+                        isCompleted ? 'text-olive line-through' : 
+                        isLocked ? 'text-gray-400' : 'text-slate'
+                      }`}>
+                        {step.title}
+                      </h3>
+                      {isNextStep && !isCompleted && (
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-sky/10 text-sky border border-sky/20">
+                          Next up
+                        </span>
+                      )}
+                      {isLocked && (
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-500">
+                          Locked
+                        </span>
+                      )}
+                    </div>
+                    <p className={`text-sm ${isLocked ? 'text-gray-400' : 'text-gray-600'}`}>
+                      {step.description}
+                    </p>
+                    {isLocked && step.dependencies && (
+                      <p className="text-xs text-gray-400 mt-1">
+                        Complete previous steps to unlock
+                      </p>
+                    )}
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-4">
-                  <span className="text-sm text-gray-500">
+                  <span className={`text-sm ${isLocked ? 'text-gray-400' : 'text-gray-500'}`}>
                     ~{step.estimatedMinutes}min
                   </span>
-                  <button
-                    onClick={() => toggleStep(step.id)}
-                    className="p-1"
-                  >
-                    {isExpanded ? 
-                      <ChevronDown className="h-4 w-4 text-gray-400" /> : 
-                      <ChevronRight className="h-4 w-4 text-gray-400" />
-                    }
-                  </button>
+                  {!isLocked && (
+                    <button
+                      onClick={() => toggleStep(step.id)}
+                      className="p-1"
+                    >
+                      {isExpanded ? 
+                        <ChevronDown className="h-4 w-4 text-gray-400" /> : 
+                        <ChevronRight className="h-4 w-4 text-gray-400" />
+                      }
+                    </button>
+                  )}
                 </div>
               </div>
 
-              {/* Expanded Content - Hidden by Default */}
-              {isExpanded && (
+              {/* Expanded Content - Only for accessible steps */}
+              {isExpanded && !isLocked && (
                 <div className="border-t border-gray-200 bg-gray-50">
                   <div className="p-6 space-y-6">
                     
