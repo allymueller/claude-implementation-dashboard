@@ -149,9 +149,12 @@ export default function ProgressTracking({
               'border-gray-100 bg-gray-50'
             }`}>
               {/* Progressive Disclosure Step Header */}
-              <div className={`px-6 py-4 flex items-center justify-between transition-colors ${
-                isLocked ? 'opacity-60 cursor-not-allowed' : 'hover:bg-gray-50 cursor-pointer'
-              }`}>
+              <div 
+                className={`px-6 py-4 flex items-center justify-between transition-colors ${
+                  isLocked ? 'opacity-60 cursor-not-allowed' : 'hover:bg-gray-50 cursor-pointer'
+                }`}
+                onClick={() => !isLocked && toggleStep(step.id)}
+              >
                 <div className="flex items-center space-x-4 flex-1">
                   {/* Smart Status Indicator */}
                   <div className="flex-shrink-0">
@@ -161,6 +164,8 @@ export default function ProgressTracking({
                           e.stopPropagation()
                           toggleStepCompletion(step.id)
                         }}
+                        className="p-1 -m-1 rounded hover:bg-white/50 transition-colors"
+                        aria-label="Mark step as incomplete"
                       >
                         <CheckCircle className="h-6 w-6 text-olive hover:text-olive/80" />
                       </button>
@@ -174,7 +179,8 @@ export default function ProgressTracking({
                           e.stopPropagation()
                           toggleStepCompletion(step.id)
                         }}
-                        className="h-6 w-6 rounded-full border-2 border-gray-300 hover:border-olive/50 transition-colors flex items-center justify-center"
+                        className="h-6 w-6 rounded-full border-2 border-gray-300 hover:border-olive/50 transition-colors flex items-center justify-center p-1 -m-1 hover:bg-white/50"
+                        aria-label="Mark step as complete"
                       >
                         {isNextStep && <div className="h-2 w-2 bg-sky rounded-full animate-pulse" />}
                       </button>
@@ -202,6 +208,9 @@ export default function ProgressTracking({
                     </div>
                     <p className={`text-sm ${isLocked ? 'text-gray-400' : 'text-gray-600'}`}>
                       {step.description}
+                      {!isLocked && !isExpanded && (
+                        <span className="text-gray-400 ml-2">· Click to view details</span>
+                      )}
                     </p>
                     {isLocked && step.dependencies && (
                       <p className="text-xs text-gray-400 mt-1">
@@ -217,12 +226,16 @@ export default function ProgressTracking({
                   </span>
                   {!isLocked && (
                     <button
-                      onClick={() => toggleStep(step.id)}
-                      className="p-1"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleStep(step.id)
+                      }}
+                      className="p-3 -m-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      aria-label={isExpanded ? 'Collapse step details' : 'Expand step details'}
                     >
                       {isExpanded ? 
-                        <ChevronDown className="h-4 w-4 text-gray-400" /> : 
-                        <ChevronRight className="h-4 w-4 text-gray-400" />
+                        <ChevronDown className="h-5 w-5 text-gray-500 hover:text-gray-700" /> : 
+                        <ChevronRight className="h-5 w-5 text-gray-500 hover:text-gray-700" />
                       }
                     </button>
                   )}
