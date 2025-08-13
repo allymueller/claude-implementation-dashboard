@@ -199,30 +199,11 @@ export const implementationSteps: ImplementationStep[] = [
   {
     id: 'step-006',
     category: 'Scale',
-    title: 'Organization Rollout',
-    description: 'Deploy Claude to all users across the organization',
-    estimatedMinutes: 240,
-    order: 6,
-    dependencies: ['step-005'],
-    required: true,
-    helpUrl: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
-    resources: [
-      {
-        title: 'Organization Rollout Guide',
-        url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
-        type: 'documentation',
-        description: 'Comprehensive guide for rolling out Claude across your organization'
-      }
-    ]
-  },
-  {
-    id: 'step-007',
-    category: 'Scale',
     title: 'Communication Templates',
     description: 'Send implementation updates and announcements to stakeholders',
     estimatedMinutes: 45,
-    order: 7,
-    dependencies: ['step-006'],
+    order: 6,
+    dependencies: ['step-005'],
     required: false,
     helpUrl: '#',
     resources: [
@@ -249,6 +230,25 @@ export const implementationSteps: ImplementationStep[] = [
         url: '#',
         type: 'documentation',
         description: 'Template for reporting implementation success to leadership'
+      }
+    ]
+  },
+  {
+    id: 'step-007',
+    category: 'Scale',
+    title: 'Organization Rollout',
+    description: 'Deploy Claude to all users across the organization',
+    estimatedMinutes: 240,
+    order: 7,
+    dependencies: ['step-006'],
+    required: true,
+    helpUrl: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
+    resources: [
+      {
+        title: 'Organization Rollout Guide',
+        url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
+        type: 'documentation',
+        description: 'Comprehensive guide for rolling out Claude across your organization'
       }
     ]
   },
