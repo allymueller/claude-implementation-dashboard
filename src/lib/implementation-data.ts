@@ -217,12 +217,49 @@ export const implementationSteps: ImplementationStep[] = [
   },
   {
     id: 'step-007',
+    category: 'Scale',
+    title: 'Communication Templates',
+    description: 'Send implementation updates and announcements to stakeholders',
+    estimatedMinutes: 45,
+    order: 7,
+    dependencies: ['step-006'],
+    required: false,
+    helpUrl: '#',
+    resources: [
+      {
+        title: 'Rollout Announcement Email Template',
+        url: '#',
+        type: 'documentation',
+        description: 'Template for announcing Claude rollout to your organization'
+      },
+      {
+        title: 'Progress Update Template',
+        url: '#',
+        type: 'documentation', 
+        description: 'Weekly implementation progress email template'
+      },
+      {
+        title: 'Training Invitation Template',
+        url: '#',
+        type: 'documentation',
+        description: 'Email template for inviting users to Claude training sessions'
+      },
+      {
+        title: 'Success Metrics Report Template',
+        url: '#',
+        type: 'documentation',
+        description: 'Template for reporting implementation success to leadership'
+      }
+    ]
+  },
+  {
+    id: 'step-008',
     category: 'Optimization',
     title: 'Usage Analytics',
     description: 'Review usage patterns and optimize deployment',
     estimatedMinutes: 30,
-    order: 7,
-    dependencies: ['step-006'],
+    order: 8,
+    dependencies: ['step-007'],
     required: false,
     helpUrl: 'https://support.anthropic.com/en/articles/10306677-creating-usage-analytics-with-claude-for-enterprise-audit-logs',
     resources: [
@@ -239,13 +276,13 @@ export const implementationSteps: ImplementationStep[] = [
     ]
   },
   {
-    id: 'step-008',
+    id: 'step-009',
     category: 'Optimization',
     title: 'Success Review',
     description: 'Conduct success review with AE and plan future enhancements',
     estimatedMinutes: 15,
-    order: 8,
-    dependencies: ['step-007'],
+    order: 9,
+    dependencies: ['step-008'],
     required: false,
     helpUrl: 'mailto:support@anthropic.com',
     resources: [
