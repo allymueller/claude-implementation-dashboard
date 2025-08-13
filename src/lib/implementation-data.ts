@@ -193,6 +193,18 @@ export const implementationSteps: ImplementationStep[] = [
         title: 'Enterprise User Training Resources',
         url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
         type: 'documentation'
+      },
+      {
+        title: 'User Onboarding Email Template',
+        url: '#',
+        type: 'documentation',
+        description: 'Email template for welcoming new users to Claude'
+      },
+      {
+        title: 'Training Invitation Template',
+        url: '#',
+        type: 'documentation',
+        description: 'Email template for inviting users to Claude training sessions'
       }
     ]
   },
@@ -212,30 +224,6 @@ export const implementationSteps: ImplementationStep[] = [
         url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
         type: 'documentation',
         description: 'Comprehensive guide for rolling out Claude across your organization'
-      },
-      {
-        title: 'Rollout Announcement Email Template',
-        url: '#',
-        type: 'documentation',
-        description: 'Template for announcing Claude rollout to your organization'
-      },
-      {
-        title: 'Progress Update Template',
-        url: '#',
-        type: 'documentation', 
-        description: 'Weekly implementation progress email template'
-      },
-      {
-        title: 'Training Invitation Template',
-        url: '#',
-        type: 'documentation',
-        description: 'Email template for inviting users to Claude training sessions'
-      },
-      {
-        title: 'Success Metrics Report Template',
-        url: '#',
-        type: 'documentation',
-        description: 'Template for reporting implementation success to leadership'
       }
     ]
   },
