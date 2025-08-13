@@ -170,52 +170,12 @@ export const implementationSteps: ImplementationStep[] = [
   },
   {
     id: 'step-005',
-    category: 'Deployment',
-    title: 'Training & Onboarding',
-    description: 'Deploy training materials and schedule sessions for your team',
-    estimatedMinutes: 180,
-    order: 5,
-    dependencies: ['step-004'],
-    required: true,
-    helpUrl: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
-    resources: [
-      {
-        title: 'Usage Limit Best Practices',
-        url: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
-        type: 'documentation'
-      },
-      {
-        title: 'Claude for Work Best Practices',
-        url: 'https://support.anthropic.com/en/collections/9387370-claude-for-work-team-and-enterprise-plans',
-        type: 'documentation'
-      },
-      {
-        title: 'Enterprise User Training Resources',
-        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
-        type: 'documentation'
-      },
-      {
-        title: 'User Onboarding Email Template',
-        url: '#',
-        type: 'documentation',
-        description: 'Email template for welcoming new users to Claude'
-      },
-      {
-        title: 'Training Invitation Template',
-        url: '#',
-        type: 'documentation',
-        description: 'Email template for inviting users to Claude training sessions'
-      }
-    ]
-  },
-  {
-    id: 'step-006',
     category: 'Scale',
     title: 'Organization Rollout',
-    description: 'Deploy Claude to all users across the organization',
+    description: 'Deploy training materials and Claude to all users across the organization',
     estimatedMinutes: 240,
-    order: 6,
-    dependencies: ['step-005'],
+    order: 5,
+    dependencies: ['step-004'],
     required: true,
     helpUrl: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
     resources: [
@@ -224,17 +184,33 @@ export const implementationSteps: ImplementationStep[] = [
         url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
         type: 'documentation',
         description: 'Comprehensive guide for rolling out Claude across your organization'
+      },
+      {
+        title: 'Usage Limit Best Practices',
+        url: 'https://support.anthropic.com/en/articles/9797557-usage-limit-best-practices',
+        type: 'documentation'
+      },
+      {
+        title: 'Training Resources',
+        url: 'https://support.anthropic.com/en/articles/9797531-what-is-the-claude-enterprise-plan',
+        type: 'documentation'
+      },
+      {
+        title: 'Communication Templates',
+        url: '#',
+        type: 'documentation',
+        description: 'Email templates for user onboarding and training invitations'
       }
     ]
   },
   {
-    id: 'step-007',
+    id: 'step-006',
     category: 'Optimization',
     title: 'Usage Analytics',
     description: 'Review usage patterns and optimize deployment',
     estimatedMinutes: 30,
-    order: 7,
-    dependencies: ['step-006'],
+    order: 6,
+    dependencies: ['step-005'],
     required: false,
     helpUrl: 'https://support.anthropic.com/en/articles/10306677-creating-usage-analytics-with-claude-for-enterprise-audit-logs',
     resources: [
@@ -251,13 +227,13 @@ export const implementationSteps: ImplementationStep[] = [
     ]
   },
   {
-    id: 'step-008',
+    id: 'step-007',
     category: 'Optimization',
     title: 'Success Review',
     description: 'Conduct success review with AE and plan future enhancements',
     estimatedMinutes: 15,
-    order: 8,
-    dependencies: ['step-007'],
+    order: 7,
+    dependencies: ['step-006'],
     required: false,
     helpUrl: 'mailto:support@anthropic.com',
     resources: [
