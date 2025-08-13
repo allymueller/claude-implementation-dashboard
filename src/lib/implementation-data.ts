@@ -199,14 +199,20 @@ export const implementationSteps: ImplementationStep[] = [
   {
     id: 'step-006',
     category: 'Scale',
-    title: 'Communication Templates',
-    description: 'Send implementation updates and announcements to stakeholders',
-    estimatedMinutes: 45,
+    title: 'Organization Rollout',
+    description: 'Deploy Claude to all users across the organization',
+    estimatedMinutes: 240,
     order: 6,
     dependencies: ['step-005'],
-    required: false,
-    helpUrl: '#',
+    required: true,
+    helpUrl: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
     resources: [
+      {
+        title: 'Organization Rollout Guide',
+        url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
+        type: 'documentation',
+        description: 'Comprehensive guide for rolling out Claude across your organization'
+      },
       {
         title: 'Rollout Announcement Email Template',
         url: '#',
@@ -235,31 +241,12 @@ export const implementationSteps: ImplementationStep[] = [
   },
   {
     id: 'step-007',
-    category: 'Scale',
-    title: 'Organization Rollout',
-    description: 'Deploy Claude to all users across the organization',
-    estimatedMinutes: 240,
-    order: 7,
-    dependencies: ['step-006'],
-    required: true,
-    helpUrl: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
-    resources: [
-      {
-        title: 'Organization Rollout Guide',
-        url: 'https://docs.google.com/document/d/1S6SnVGwBw2-oTYRjDmz12V56ISUy02LPbtnbRwrEdG8/edit?tab=t.0#heading=h.quyc6nd8fmlh',
-        type: 'documentation',
-        description: 'Comprehensive guide for rolling out Claude across your organization'
-      }
-    ]
-  },
-  {
-    id: 'step-008',
     category: 'Optimization',
     title: 'Usage Analytics',
     description: 'Review usage patterns and optimize deployment',
     estimatedMinutes: 30,
-    order: 8,
-    dependencies: ['step-007'],
+    order: 7,
+    dependencies: ['step-006'],
     required: false,
     helpUrl: 'https://support.anthropic.com/en/articles/10306677-creating-usage-analytics-with-claude-for-enterprise-audit-logs',
     resources: [
@@ -276,13 +263,13 @@ export const implementationSteps: ImplementationStep[] = [
     ]
   },
   {
-    id: 'step-009',
+    id: 'step-008',
     category: 'Optimization',
     title: 'Success Review',
     description: 'Conduct success review with AE and plan future enhancements',
     estimatedMinutes: 15,
-    order: 9,
-    dependencies: ['step-008'],
+    order: 8,
+    dependencies: ['step-007'],
     required: false,
     helpUrl: 'mailto:support@anthropic.com',
     resources: [
