@@ -137,40 +137,40 @@ export default function SupportPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-ivory">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b border-gray-200">
+      <nav className="bg-ivory border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-medium text-gray-900">Claude for Enterprise</Link>
-              <div className="ml-4 px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">Implementation Portal</div>
+              <Link href="/" className="text-xl font-medium text-slate">Claude for Enterprise</Link>
+              <div className="ml-4 px-3 py-1 bg-clay/10 rounded-full text-sm text-slate">Implementation Portal</div>
             </div>
             <div className="hidden md:flex items-center space-x-6">
-              <Link href="/sso-setup" className="text-gray-600 hover:text-gray-900">SSO Setup</Link>
-              <Link href="/user-management" className="text-gray-600 hover:text-gray-900">User Management</Link>
-              <Link href="/onboarding" className="text-gray-600 hover:text-gray-900">Team Onboarding</Link>
-              <Link href="/resources" className="text-gray-600 hover:text-gray-900">Resources</Link>
-              <Link href="/support" className="text-blue-600 font-medium">Support</Link>
+              <Link href="/sso-setup" className="text-gray-600 hover:text-slate">SSO Setup</Link>
+              <Link href="/user-management" className="text-gray-600 hover:text-slate">User Management</Link>
+              <Link href="/onboarding" className="text-gray-600 hover:text-slate">Team Onboarding</Link>
+              <Link href="/resources" className="text-gray-600 hover:text-slate">Resources</Link>
+              <Link href="/support" className="text-clay font-medium">Support</Link>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Header */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      <section className="bg-ivory py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center mb-4">
-              <Link href="/" className="text-blue-600 hover:text-blue-700 flex items-center">
+              <Link href="/" className="text-clay hover:text-clay/80 flex items-center">
                 <ArrowRight className="h-4 w-4 mr-2 transform rotate-180" />
                 Back to Implementation
               </Link>
             </div>
-            <h1 className="text-3xl font-medium text-gray-900 mb-4">
+            <h1 className="text-3xl font-medium text-slate mb-4">
               Support & Troubleshooting
             </h1>
-            <p className="text-lg text-gray-600 text-serif">
+            <p className="text-lg text-gray-600">
               Comprehensive support resources designed to help you succeed with Claude Enterprise. 
               Our team of experts is here to guide you through any implementation challenges.
             </p>
@@ -185,16 +185,16 @@ export default function SupportPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <div className={`w-3 h-3 rounded-full mr-3 ${
-                  systemStatus.status === 'operational' ? 'bg-green-500' : 'bg-red-500'
+                  systemStatus.status === 'operational' ? 'bg-olive' : 'bg-coral'
                 }`}></div>
                 <div>
-                  <h3 className="font-medium text-gray-900">System Status: All Systems Operational</h3>
+                  <h3 className="font-medium text-slate">System Status: All Systems Operational</h3>
                   <p className="text-sm text-gray-600">Uptime: {systemStatus.uptime} • Last update: {systemStatus.lastUpdate}</p>
                 </div>
               </div>
               <Link 
                 href="https://status.anthropic.com" 
-                className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center"
+                className="text-clay hover:text-clay/80 text-sm font-medium flex items-center"
               >
                 View Status Page
                 <ExternalLink className="h-4 w-4 ml-1" />
@@ -208,7 +208,7 @@ export default function SupportPage() {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-2xl font-medium text-gray-900 mb-2">
+            <h2 className="text-2xl font-medium text-slate mb-2">
               How to Get Help
             </h2>
             <p className="text-gray-600">
@@ -218,12 +218,12 @@ export default function SupportPage() {
 
           <div className="grid lg:grid-cols-3 gap-6">
             {supportChannels.map((channel, index) => (
-              <div key={index} className="bg-white rounded-lg border border-gray-200 p-6">
+              <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 hover:border-clay/30 transition-colors">
                 <div className="flex items-center mb-4">
-                  <div className="p-3 bg-blue-100 rounded-lg mr-4">
-                    <channel.icon className="h-6 w-6 text-blue-600" />
+                  <div className="p-3 bg-clay/10 rounded-lg mr-4">
+                    <channel.icon className="h-6 w-6 text-clay" />
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900">{channel.title}</h3>
+                  <h3 className="text-lg font-medium text-slate">{channel.title}</h3>
                 </div>
                 
                 <p className="text-gray-600 mb-4">{channel.description}</p>
@@ -231,22 +231,22 @@ export default function SupportPage() {
                 <div className="space-y-2 text-sm mb-6">
                   <div className="flex justify-between">
                     <span className="text-gray-500">Availability:</span>
-                    <span className="font-medium">{channel.availability}</span>
+                    <span className="font-medium text-slate">{channel.availability}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500">Response:</span>
-                    <span className="font-medium">{channel.responseTime}</span>
+                    <span className="font-medium text-slate">{channel.responseTime}</span>
                   </div>
                 </div>
                 
                 <div className="mb-6">
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">Best for:</h4>
+                  <h4 className="text-sm font-medium text-slate mb-2">Best for:</h4>
                   <p className="text-sm text-gray-600">{channel.best_for}</p>
                 </div>
 
                 <Link 
                   href={channel.href}
-                  className="w-full flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  className="w-full flex items-center justify-center px-4 py-2 bg-clay text-ivory rounded-lg hover:opacity-90 transition-opacity font-medium"
                 >
                   {channel.action}
                   <ExternalLink className="h-4 w-4 ml-2" />
@@ -261,7 +261,7 @@ export default function SupportPage() {
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-2xl font-medium text-gray-900 mb-2">
+            <h2 className="text-2xl font-medium text-slate mb-2">
               Common Issues & Solutions
             </h2>
             <p className="text-gray-600">
@@ -271,23 +271,23 @@ export default function SupportPage() {
 
           <div className="space-y-8">
             {commonIssues.map((category, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">{category.category}</h3>
+              <div key={index} className="bg-clay/5 rounded-lg p-6 border border-clay/10">
+                <h3 className="text-lg font-medium text-slate mb-4">{category.category}</h3>
                 <div className="space-y-4">
                   {category.issues.map((item, itemIndex) => (
-                    <div key={itemIndex} className="bg-white rounded-lg border border-gray-200 p-4">
+                    <div key={itemIndex} className="bg-white rounded-lg border border-gray-200 p-4 hover:border-clay/30 transition-colors">
                       <div className="flex items-start justify-between">
                         <div className="flex-grow">
-                          <h4 className="font-medium text-gray-900 mb-2">{item.issue}</h4>
+                          <h4 className="font-medium text-slate mb-2">{item.issue}</h4>
                           <p className="text-sm text-gray-600 mb-3">{item.solution}</p>
                           <Link 
                             href={item.link}
-                            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                            className="text-sm text-clay hover:text-clay/80 font-medium"
                           >
                             View detailed solution →
                           </Link>
                         </div>
-                        <HelpCircle className="h-5 w-5 text-gray-400 ml-4 flex-shrink-0" />
+                        <HelpCircle className="h-5 w-5 text-clay/60 ml-4 flex-shrink-0" />
                       </div>
                     </div>
                   ))}
@@ -299,10 +299,10 @@ export default function SupportPage() {
       </section>
 
       {/* Resource Library */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-2xl font-medium text-gray-900 mb-2">
+            <h2 className="text-2xl font-medium text-slate mb-2">
               Self-Service Resources
             </h2>
             <p className="text-gray-600">
@@ -312,17 +312,17 @@ export default function SupportPage() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {resources.map((resource, index) => (
-              <div key={index} className="bg-white rounded-lg border border-gray-200 p-6">
+              <div key={index} className="bg-white rounded-lg border border-gray-200 p-6 hover:border-clay/30 transition-colors">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start">
-                    <div className="p-2 bg-gray-100 rounded-lg mr-4">
-                      {resource.type === 'Video Series' && <Video className="h-5 w-5 text-gray-600" />}
-                      {resource.type === 'PDF Guide' && <FileText className="h-5 w-5 text-gray-600" />}
-                      {resource.type === 'Documentation' && <Book className="h-5 w-5 text-gray-600" />}
-                      {resource.type === 'Guide' && <FileText className="h-5 w-5 text-gray-600" />}
+                    <div className="p-2 bg-clay/10 rounded-lg mr-4">
+                      {resource.type === 'Video Series' && <Video className="h-5 w-5 text-clay" />}
+                      {resource.type === 'PDF Guide' && <FileText className="h-5 w-5 text-clay" />}
+                      {resource.type === 'Documentation' && <Book className="h-5 w-5 text-clay" />}
+                      {resource.type === 'Guide' && <FileText className="h-5 w-5 text-clay" />}
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">{resource.title}</h3>
+                      <h3 className="font-medium text-slate">{resource.title}</h3>
                       <p className="text-sm text-gray-600 mt-1">{resource.description}</p>
                     </div>
                   </div>
@@ -336,7 +336,7 @@ export default function SupportPage() {
                   </div>
                   <Link 
                     href={resource.link}
-                    className="text-blue-600 hover:text-blue-700 font-medium text-sm"
+                    className="text-clay hover:text-clay/80 font-medium text-sm"
                   >
                     Access →
                   </Link>
@@ -351,51 +351,51 @@ export default function SupportPage() {
       <section className="py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-medium text-gray-900 mb-3">
+            <h2 className="text-2xl font-medium text-slate mb-3">
               Your Enterprise Support Team
             </h2>
-            <p className="text-gray-600 leading-relaxed text-serif">
+            <p className="text-gray-600 leading-relaxed">
               Beyond technical assistance, we're your partners in organizational transformation. 
               Our support philosophy centers on empowering your team with deep understanding and practical expertise.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-medium text-gray-900 mb-4">Customer Success Manager</h3>
+            <div className="bg-clay/5 rounded-lg p-6 border border-clay/10">
+              <h3 className="font-medium text-slate mb-4">Customer Success Manager</h3>
               <div className="space-y-3">
                 <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-sm font-medium text-blue-600">SC</span>
+                  <div className="w-8 h-8 bg-clay rounded-full flex items-center justify-center mr-3">
+                    <span className="text-sm font-medium text-ivory">SC</span>
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">Sarah Chen</div>
+                    <div className="font-medium text-slate">Sarah Chen</div>
                     <div className="text-sm text-gray-600">sarah.chen@anthropic.com</div>
                   </div>
                 </div>
                 <Link 
                   href="#schedule-call"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm"
+                  className="inline-flex items-center text-clay hover:text-clay/80 font-medium text-sm"
                 >
                   Schedule a call →
                 </Link>
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-medium text-gray-900 mb-4">Technical Support</h3>
+            <div className="bg-clay/5 rounded-lg p-6 border border-clay/10">
+              <h3 className="font-medium text-slate mb-4">Technical Support</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Business Hours:</span>
-                  <span className="font-medium">6 AM - 6 PM PST</span>
+                  <span className="font-medium text-slate">6 AM - 6 PM PST</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Critical Issues:</span>
-                  <span className="font-medium">24/7 Coverage</span>
+                  <span className="font-medium text-slate">24/7 Coverage</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Response SLA:</span>
-                  <span className="font-medium">&lt; 1 Hour</span>
+                  <span className="font-medium text-slate">&lt; 1 Hour</span>
                 </div>
               </div>
             </div>
